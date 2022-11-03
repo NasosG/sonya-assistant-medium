@@ -18,10 +18,8 @@ const hello = ["Hello human! what\'s up?",
 let voices = [];
 // UI elements
 const startBtn = document.getElementById("startBtn");
-const result = document.createElement("div");
-const processing = document.createElement("p");
-document.body.append(result);
-document.body.append(processing);
+const result = document.getElementById("result");
+const processing = document.getElementById("processing");
 
 // Wait on voices to be loaded before fetching list
 window.speechSynthesis.onvoiceschanged = () => { 
@@ -81,22 +79,24 @@ function process(rawText) {
     response = getRandomItemFromArray(hello);
   } else if (text.includes("yourname")) {
     response = "My name's Sonya.";
-  } else if (text.includes("howareyou")||text.includes("whatsup")) {
-    response = "I'm good.";
+  } else if (text.includes("howareyou") || text.includes("whatsup")) {
+    response = "I'm fine. How about you?";
   } else if (text.includes("whattimeisit")) {
     response = new Date().toLocaleTimeString();
   } else if (text.includes("joke")) {
     response = getRandomItemFromArray(joke);
-  } else if ((text.includes("play") || text.includes("sonyaplay")) && text.includes("despacito")) {
+  } else if (text.includes("play") && text.includes("despacito")) {
     response = "Opened it in another tab";
-    window.open("https://www.youtube.com/watch?v=kJQP7kiw5Fk");
+    window.open("https://www.youtube.com/watch?v=kJQP7kiw5Fk", "_blank", "noopener");
+  } else if (text.includes("flip") && text.includes("coin")) {
+	  response = Math.random() < 0.5 ? 'heads' : 'tails';
   } else if (text.includes("bye") || text.includes("stop")) {
     response = "Bye!!";
     toggleBtn();
-  }
+  } 
 
   if (!response) {
-    window.open(`http://google.com/search?q=${rawText.replace("search", "")}`, "_blank");
+    window.open(`http://google.com/search?q=${rawText.replace("search", "")}`, "_blank", "noopener");
     return `I found some information for ${rawText}`;
   }
 
