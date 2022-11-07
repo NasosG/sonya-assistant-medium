@@ -89,7 +89,7 @@ function process(rawText) {
     response = "Opened it in another tab";
     window.open("https://www.youtube.com/watch?v=kJQP7kiw5Fk", "_blank", "noopener");
   } else if (text.includes("flip") && text.includes("coin")) {
-    response = Math.random() < 0.5 ? 'heads' : 'tails';
+    response = Math.random() < 0.5 ? "heads" : "tails";
   } else if (text.includes("bye") || text.includes("stop")) {
     response = "Bye!!";
     toggleBtn();
