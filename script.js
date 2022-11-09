@@ -42,7 +42,7 @@ if (typeof SpeechRecognition === "undefined") {
     const recognitionText = recognitionResult[0].transcript;
 	
     if (recognitionResult.isFinal) {
-      processing.innerHTML = "processing ....";
+      processing.innerHTML = "processing ...";
 
       const response = process(recognitionText);
       const p = document.createElement("p");
